@@ -87,12 +87,12 @@ public class Mage : MonoBehaviour
         Refresh();
 
         // TEST SPELL CREATION
-        InstantiateSpell("ybb", 0);
-        InstantiateSpell("xxa", 0);
-        InstantiateSpell("xyx", 0);
-        InstantiateSpell("ybb", 0);
-        InstantiateSpell("xxa", 0);
-        InstantiateSpell("xyx", 0);
+        InstantiateSpell("YBB", 0);
+        InstantiateSpell("XXA", 0);
+        InstantiateSpell("XYX", 0);
+        InstantiateSpell("YBB", 0);
+        InstantiateSpell("XXA", 0);
+        InstantiateSpell("XYX", 0);
         //InstantiateSpell("xyx", 1);
         //InstantiateSpell("xxa", 1);
         //InstantiateSpell("xxa", 1);
@@ -160,19 +160,19 @@ public class Mage : MonoBehaviour
 
         switch (spell_code)
         {
-            case "ybb":
+            case "YBB":
                 p = Instantiate<Projectile>(prefab_fireball);
                 p.Initialize(this, pos, group, group_names[group]);
                 break;
-            case "xyx":
+            case "XYX":
                 p = Instantiate<Projectile>(prefab_iceball);
                 p.Initialize(this, pos, group, group_names[group]);
                 break;
-            case "xxa":
+            case "XXA":
                 p = Instantiate<Projectile>(prefab_waterball);
                 p.Initialize(this, pos, group, group_names[group]);
                 break;
-            case "xxxbbb":
+            case "XXXBBB":
                 p = Instantiate<Projectile>(prefab_shieldbreaker);
                 p.Initialize(this, pos, group, group_names[group]);
                 break;

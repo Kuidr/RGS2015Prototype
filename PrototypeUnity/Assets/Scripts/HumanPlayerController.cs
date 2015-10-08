@@ -28,10 +28,10 @@ public class HumanPlayerController : PlayerController
         InputMove = new Vector2(h, v);
 
         // Spell code
-        if (ADown()) InputSpellCode += "a";
-        else if (BDown()) InputSpellCode += "b";
-        else if (XDown()) InputSpellCode += "x";
-        else if (YDown()) InputSpellCode += "y";
+        if (ADown()) InputSpellCode += "A";
+        else if (BDown()) InputSpellCode += "B";
+        else if (XDown()) InputSpellCode += "X";
+        else if (YDown()) InputSpellCode += "Y";
 
         // Casting (explicit)
         if (Input.GetAxis("Cast" + control_scheme) > 0)
