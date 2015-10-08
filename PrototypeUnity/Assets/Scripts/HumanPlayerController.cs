@@ -13,7 +13,7 @@ public class HumanPlayerController : PlayerController
         //this.match = match;
     }
 
-    private void Update()
+    new private void Update()
     {
         // Control group switching
         if (Input.GetButtonDown("ScrollGroups" + control_scheme))
@@ -28,22 +28,20 @@ public class HumanPlayerController : PlayerController
         InputMove = new Vector2(h, v);
 
         // Spell code
-        string old_code = InputSpellCode;
-
         if (ADown()) InputSpellCode += "a";
         else if (BDown()) InputSpellCode += "b";
         else if (XDown()) InputSpellCode += "x";
         else if (YDown()) InputSpellCode += "y";
 
-        if (InputSpellCode != old_code) Debug.Log(InputSpellCode);
-
-        // Casting
+        // Casting (explicit)
         if (Input.GetAxis("Cast" + control_scheme) > 0)
         {
             InputCast();
             InputSpellCode = "";
             Debug.Log("Cast");
         }
+
+        base.Update();
     }
 
     private bool ADown()

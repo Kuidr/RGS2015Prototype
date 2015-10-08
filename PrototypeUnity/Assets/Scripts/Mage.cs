@@ -23,6 +23,7 @@ public class Mage : MonoBehaviour
     private List<Projectile>[] projectile_groups;
     public Projectile prefab_fireball, prefab_iceball, prefab_waterball, prefab_shieldbreaker;
     public Transform cast_point;
+    public TextMesh spell_code_text;
 
     // State
     private bool invincible = true;
@@ -50,11 +51,8 @@ public class Mage : MonoBehaviour
 
     // PRIVATE MODIFIERS
 
-    private void Start()
+    private void Awake()
     {
-        // Color
-        sprite.color = player_color;
-
         // Player controller
         if (ai)
         {
@@ -71,15 +69,22 @@ public class Mage : MonoBehaviour
         // input events
         pc.InputCast += OnCastSpell;
         pc.InputScrollGroups += OnScrollGroups;
+        pc.InputSpellCodeChange += OnSpellCodeChange;
 
-        // other
+        // other references
         rb = GetComponent<Rigidbody2D>();
-        Refresh();
+
+        // color
+        sprite.color = player_color;
 
         // spells
         projectile_groups = new List<Projectile>[group_names.Length];
         for (int i = 0; i < projectile_groups.Length; ++i)
             projectile_groups[i] = new List<Projectile>();
+    }
+    private void Start()
+    {
+        Refresh();
 
         // TEST SPELL CREATION
         InstantiateSpell("ybb", 0);
@@ -137,9 +142,14 @@ public class Mage : MonoBehaviour
         if (event_group_swtich != null)
             event_group_swtich(active_group);
     }
+
     private void OnCastSpell()
     {
         InstantiateSpell(pc.InputSpellCode, active_group);
+    }
+    private void OnSpellCodeChange()
+    {
+        spell_code_text.text = pc.InputSpellCode;
     }
     private void InstantiateSpell(string spell_code, int group)
     {

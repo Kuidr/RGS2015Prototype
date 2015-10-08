@@ -16,9 +16,11 @@ public class AIPlayerController : PlayerController
         //this.match = match;
     }
 
-    private void Start()
+    new private void Start()
     {
         StartCoroutine(UpdateMove());
+
+        base.Start();
     }
     private IEnumerator UpdateMove()
     {
